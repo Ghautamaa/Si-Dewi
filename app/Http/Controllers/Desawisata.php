@@ -71,7 +71,10 @@ class Desawisata extends Controller
      */
     public function edit(string $id)
     {
-        return view('desawisata.edit');
+        $response = Http::get('http://localhost:3000/desawisata/'.$id)->collect();
+        return view('desawisata.edit',[
+            'desawisata'=>$response,
+        ]);
     }
 
     /**

@@ -20,7 +20,8 @@
     </div>
     <div class="mb-5">
         <label for="gambar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">gambar Desawisata</label>
-        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="gambar" id="gambar" type="file">
+        <img class="img-preview img-fluid mb-3 col-sm-5">
+        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="gambar" id="gambar" type="file" onchange="previewImage()">
         @error('gambar')    
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
         @enderror
@@ -34,7 +35,7 @@
     </div>
     <div class="mb-5">
         <label for="maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maps Desawisata</label>
-        <input type="text" name="maps" id="maps" value="{{old('maps')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="text" name="maps" id="maps" value="{{old('maps')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
         @error('maps')    
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
         @enderror
@@ -43,6 +44,9 @@
         <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your Kategori</label>
         <select name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option hidden>Kategori</option>
+            @if (old('ketegori'))
+                <option value="{{$desawisata['ketegori']}}" selected>{{$desawisata['ketegori']}}</option>   
+            @endif
             <option value="Rintisan">Rintisan</option>
             <option value="Berkembang">Berkembang</option>
             <option value="Maju">Maju</option>
@@ -53,6 +57,9 @@
         <label for="kabupaten" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your kabupaten</label>
         <select name="kabupaten" id="kabupaten" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option hidden>kabupaten</option>
+            @if (old('kabupaten'))
+                <option value="{{$desawisata['kabupaten']}}" selected>{{$desawisata['kabupaten']}}</option>   
+            @endif
             <option value="Badung">Badung</option>
             <option value="Bangli">Bangli</option>
             <option value="Buleleng">Buleleng</option>
@@ -67,4 +74,19 @@
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
   </form>
 
+  <script>
+      function previewImage(){
+          const image = document.querySelector('#gambar');
+          const imgPreview = document.querySelector('.img-preview');
+  
+          imgPreview.style.display = 'block';
+  
+          const oFReader = new FileReader();
+          oFReader.readAsDataURL(image.files[0]);
+  
+          oFReader.onload =function(oFREvent){
+              imgPreview.src = oFREvent.target.result;
+          }
+      }
+  </script>
 @endsection
