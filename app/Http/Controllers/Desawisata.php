@@ -71,7 +71,7 @@ class Desawisata extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('desawisata.edit');
     }
 
     /**
