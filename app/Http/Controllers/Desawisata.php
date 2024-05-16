@@ -82,7 +82,37 @@ class Desawisata extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=>'required|max:255',
+            'alamat'=>'required|max:255',
+            'deskripsi'=>'required|max:255',
+            'maps'=>'required|max:255',
+            'kategori'=>'required|max:255',
+            'kabupaten'=>'required|max:255',
+        ]);
+        if(!$request['gambar']){
+            $validatedData['gambar'] = $request['gambarOld'];
+        }
+
+        $validatedData['createdAt'] = now();
+        $validatedData['updatedAt'] = now();
+
+       
+        if($_FILES['gambar']['error'] === 4){
+            $response = Http::patch('http://localhost:3000/desawisata/'.$id,$validatedData);
+        }else{
+            $response = Http::attach(
+                'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
+            )->patch('http://localhost:3000/desawisata/'.$id,$validatedData);
+        }
+
+        if($response->successful()){
+            return redirect('/desawisata')->with('message','berhasil');
+        }elseif ($response->failed()) {
+            return redirect('/desawisata/create')->with('message','gagal');
+        } else {
+            return redirect('/desawisata')->with('message','eror system');
+        }
     }
 
     /**
@@ -90,7 +120,6 @@ class Desawisata extends Controller
      */
     public function destroy(string $id)
     {
-        ///desawisata/{{$row['id']}}
         $response = Http::delete('http://localhost:3000/desawisata/'.$id);
         if($response->successful()){
             return redirect('/desawisata')->with('message','berhasil');
