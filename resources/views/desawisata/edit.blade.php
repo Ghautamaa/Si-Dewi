@@ -1,7 +1,6 @@
 @extends('partials.main')
 
 @section('container')
-
 <form class="max-w-md mx-auto bg-slate-900 p-5 rounded-lg" action="/desawisata/{{$desawisata['id']}}" method="POST" enctype="multipart/form-data"> 
     @csrf
     @method('PATCH')
@@ -14,7 +13,7 @@
     </div>
     <div class="mb-5">
         <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Desawisata</label>
-        <input type="text" name="alamat" id="alamat" value="{{$desawisata['nama'],old('alamat')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="text" name="alamat" id="alamat" value="{{$desawisata['alamat'],old('alamat')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         @error('alamat')    
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
         @enderror
@@ -34,14 +33,20 @@
     </div>
     <div class="mb-5">
         <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">deskripsi Desawisata</label>
-        <textarea name="deskripsi" id="deskripsi" rows="3" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{old($desawisata['nama'],'deskripsi')}}</textarea>
+        <textarea name="deskripsi" id="deskripsi" rows="3" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if (old('deskripsi'))
+            {{old('deskripsi')}}
+            @else
+            {{$desawisata['deskripsi'],}}
+            @endif
+        </textarea>
         @error('deskripsi')    
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
         @enderror
     </div>
     <div class="mb-5">
         <label for="maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maps Desawisata</label>
-        <input type="text" name="maps" id="maps" value="{{$desawisata['nama'],old('maps')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="text" name="maps" id="maps" value="{{$desawisata['maps'],old('maps')}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         @error('maps')    
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> Username already taken!</p>
         @enderror

@@ -13,8 +13,10 @@ class Desawisata extends Controller
     public function index()
     {        
         $response = Http::get('http://localhost:3000/desawisata')->collect();
+
         return view('desawisata.index',[
             'desawisata'=>$response,
+            'title'=>'desawisata'
         ]);
     }
 
@@ -23,7 +25,9 @@ class Desawisata extends Controller
      */
     public function create()
     {
-        return view('desawisata.create');
+        return view('desawisata.create',[
+            'title'=>'desawisata'
+        ]);
     }
 
     /**
@@ -35,7 +39,7 @@ class Desawisata extends Controller
             'nama'=>'required|max:255',
             'alamat'=>'required|max:255',
             'gambar'=>'required|image|file',
-            'deskripsi'=>'required|max:255',
+            'deskripsi'=>'required',
             'maps'=>'required|max:255',
             'kategori'=>'required|max:255',
             'kabupaten'=>'required|max:255',
@@ -49,11 +53,11 @@ class Desawisata extends Controller
         )->post('http://localhost:3000/desawisata/add',$validatedData);
 
         if($response->successful()){
-            return redirect('/desawisata')->with('message','berhasil');
+            return redirect('/desawisata')->with('message','berhasil menambahkan');
         }elseif ($response->failed()) {
-            return redirect('/desawisata/create')->with('message','gagal');
+            return redirect('/desawisata/create')->with('message','gagal menambahkan');
         } else {
-            return redirect('/desawisata')->with('message','eror system');
+            return redirect('/desawisata')->with('message','erorr system 500');
         }
         
     }
@@ -72,8 +76,10 @@ class Desawisata extends Controller
     public function edit(string $id)
     {
         $response = Http::get('http://localhost:3000/desawisata/'.$id)->collect();
+        // dd($response);
         return view('desawisata.edit',[
             'desawisata'=>$response,
+            'title'=>'desawisata'
         ]);
     }
 
@@ -85,7 +91,7 @@ class Desawisata extends Controller
         $validatedData = $request->validate([
             'nama'=>'required|max:255',
             'alamat'=>'required|max:255',
-            'deskripsi'=>'required|max:255',
+            'deskripsi'=>'required',
             'maps'=>'required|max:255',
             'kategori'=>'required|max:255',
             'kabupaten'=>'required|max:255',
@@ -107,11 +113,11 @@ class Desawisata extends Controller
         }
 
         if($response->successful()){
-            return redirect('/desawisata')->with('message','berhasil');
+            return redirect('/desawisata')->with('message','berhasil mengupdate');
         }elseif ($response->failed()) {
-            return redirect('/desawisata/create')->with('message','gagal');
+            return redirect('/desawisata/'.$id.'/')->with('message','gagal mengupdate');
         } else {
-            return redirect('/desawisata')->with('message','eror system');
+            return redirect('/desawisata')->with('message','erorr system 500');
         }
     }
 
@@ -122,11 +128,11 @@ class Desawisata extends Controller
     {
         $response = Http::delete('http://localhost:3000/desawisata/'.$id);
         if($response->successful()){
-            return redirect('/desawisata')->with('message','berhasil');
+            return redirect('/desawisata')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {
-            return redirect('/desawisata')->with('message','gagal');
+            return redirect('/desawisata')->with('message','gagal menghapus');
         } else {
-            return redirect('/desawisata')->with('message','eror system');
+            return redirect('/desawisata')->with('message','erorr system 500');
         }
     }
 }
