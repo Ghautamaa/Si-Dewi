@@ -13,7 +13,7 @@ class Desawisata extends Controller
     public function index()
     {        
         $response = Http::get('http://localhost:3000/desawisata')->collect();
-
+        dd($response);
         return view('desawisata.index',[
             'desawisata'=>$response,
             'title'=>'desawisata'
