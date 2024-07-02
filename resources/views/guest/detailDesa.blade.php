@@ -17,13 +17,8 @@
 
         {{-- navbar end --}}
         {{-- background --}}
-<<<<<<< HEAD
         <div class="mix-blend-screen inset-0 bg-black opacity-70 mt-16 sm:mt-0  "> </div>
             <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full sm:h-full object-cover"  style="width: 100vw;">       
-=======
-        <div class="inset-0 bg-black opacity-70"> </div>
-            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full h-full object-cover"  style="width: 100vw;">       
->>>>>>> 581a106fa67d2d50def6febd8090a5911a354827
         
         {{-- background --}}
         {{-- content --}}
@@ -56,24 +51,24 @@
             <div>
                 {{-- tab --}}
                     <div class="mb-4 mt-8 top-0  border-b border-gray-200 dark:border-gray-700 sm:container  text-justify px-1 w-full mx-auto ">
-                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-green-600 hover:text-green-600 dark:text-green-500 dark:hover:text-green-500 border-green-600 dark:border-green-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
                             <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Destinasi</button>
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="destinasi-styled-tab" data-tabs-target="#styled-destinasi" type="button" role="tab" aria-controls="destinasi" aria-selected="false">Destinasi</button>
                             </li>
                             <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Akomodasi</button>
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="akomodasi-styled-tab" data-tabs-target="#styled-akomodasi" type="button" role="tab" aria-controls="akomodasi" aria-selected="false">Akomodasi</button>
                             </li>
                             <li class="me-2" role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-styled-tab" data-tabs-target="#styled-settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Produk</button>
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="produk-styled-tab" data-tabs-target="#styled-produk" type="button" role="tab" aria-controls="produk" aria-selected="false">Produk</button>
                             </li>
                             <li role="presentation">
-                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-styled-tab" data-tabs-target="#styled-contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Paket Wisata</button>
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="pawi-styled-tab" data-tabs-target="#styled-pawi" type="button" role="tab" aria-controls="pawi" aria-selected="false">Paket Wisata</button>
                             </li>
                         </ul>
                     </div>
                     <div>
                     <div id="default-styled-tab-content" class="sm:container  text-justify px-1 w-full mx-auto bg-secondary">
-                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800 " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800 " id="styled-destinasi" role="tabpanel" aria-labelledby="destinasi-tab">
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                     <a href="#">
@@ -154,64 +149,90 @@
                                             </svg>
                                         </a>
                                     </div>
-                                </div>
-                                 
-                            </div>
-
-
-                        </div>
-                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                    <a href="#">
-                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
-                                    </a>
-                                    <div class="p-5">
-                                        <a href="#">
-                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
-                                        </a>
-                                        <a href="#">
-                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
-                                        </a>
-                                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                Read more
-                                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                                </svg>
-                                            </a>
-                                    </div>
-                                </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-settings" role="tabpanel" aria-labelledby="settings-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-akomodasi" role="tabpanel" aria-labelledby="akomodasi-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                         <a href="#">
                                             <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
                                         </a>
-                                    <div class="p-5">
-                                        <a href="#">
-                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
-                                        </a>
-                                        <a href="#">
-                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
-                                        </a>
-                                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Read more
-                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                            </svg>
-                                        </a>
+                                        <div class="p-5">
+                                            <a href="#">
+                                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                            </a>
+                                            <a href="#">
+                                                <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                            </a>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    Read more
+                                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                    </svg>
+                                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-produk" role="tabpanel" aria-labelledby="produk-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                                    <a href="#">
+                                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                                    </a>
+                                                <div class="p-5">
+                                                    <a href="#">
+                                                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                                    </a>
+                                                    <a href="#">
+                                                        <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                                    </a>
+                                                    <p class="mb-3  font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                    <div class="flex items-center justify-between">
+                                                        <span class="text-xl font-bold text-gray-900 dark:text-white">Rp 599.000</span>
+                                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Read more
+                                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                        </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-pawi" role="tabpanel" aria-labelledby="pawi-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                                <a href="#">
+                                                    <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                                </a>
+                                            <div class="p-5">
+                                                <a href="#">
+                                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                                </a>
+                                                <a href="#">
+                                                <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                                </a>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                <div class="flex items-center justify-between">
+                                                        <span class="text-xl font-bold text-gray-900 dark:text-white">Rp 599.000</span>
+                                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Read more
+                                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                        </svg>
+                                                        </a>
+                                                </div>
+                                            </div>
+                                            
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                            <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-                        </div>
-                    </div>
                     </div>
                     
                 {{-- tab --}}

@@ -93,7 +93,6 @@
     color: #fff;
 }
 
-<<<<<<< HEAD
 .map-container {
   position: relative;
   padding-bottom: 10em; /* Ratio 16:9 */
@@ -120,7 +119,6 @@
   border-bottom: 2px solid blue;
 }
 
-=======
 .card {
     position: relative;
     overflow: hidden;
@@ -143,4 +141,3 @@
 
 .footer{
 }
->>>>>>> 581a106fa67d2d50def6febd8090a5911a354827
