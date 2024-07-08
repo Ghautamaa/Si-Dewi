@@ -136,9 +136,15 @@
             <div class="bg-secondary pl-15"
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
+<<<<<<< HEAD
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Destinasi Favorit</h1>
                     <p class="text-gray-600 mb-8 text-white">Nikmati panorama alam dan budaya yang menawan di setiap
                         destinasi.</p>
+=======
+                    <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
+                    <p class= "mb-8 text-white">Find tourist villages based on the distribution map of
+                        districts and cities in Bali.</p>
+>>>>>>> 72bdba052c5546b15ed86eada126e80e607c5d56
                 </div>
                 <div class="container w-full max-w-5xl mb-10">
                     <div class="flex flex-col space-y-4">

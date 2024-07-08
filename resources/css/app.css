@@ -215,6 +215,32 @@ section {
     color: #fff;
 }
 
+.map-container {
+  position: relative;
+  padding-bottom: 10em; /* Ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 80% !important;
+}
+.tabcontent {
+  display: none;
+}
+.tablinks {
+  color: black;
+  border-bottom: 2px solid transparent;
+}
+.tablinks.active {
+  color: blue;
+  border-bottom: 2px solid blue;
+}
+
 .card {
     position: relative;
     overflow: hidden;

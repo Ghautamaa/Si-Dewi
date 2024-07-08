@@ -5,18 +5,23 @@
     <meta charset='utf-8' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
 <body>
+    @include('partials.navbar')
     <div class="container mx-auto p-20">
         <div class="p-20" id='calendar'></div>
     </div>
-
+    @include('partials.navbar')
 
 
     <!-- Modal -->
-    <div id="modal-action" class="modal" tabindex="-1">
+    <div id="modal-action" class="modal bg-slate-300" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

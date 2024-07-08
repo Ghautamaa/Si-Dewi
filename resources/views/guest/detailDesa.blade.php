@@ -12,25 +12,25 @@
     {{-- container start --}}
     <div class="container-fluid h-screen">
         {{-- navbar start --}}
+        
         @include('partials.navbar')
+
         {{-- navbar end --}}
         {{-- background --}}
-        <div class="mix-blend-screen inset-0 bg-black opacity-70"> </div>
-            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full h-full object-cover"  style="width: 100vw;">       
+        <div class="mix-blend-screen inset-0 bg-black opacity-70 mt-16 sm:mt-0  "> </div>
+            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full sm:h-full object-cover"  style="width: 100vw;">       
         
         {{-- background --}}
         {{-- content --}}
-        <div class=" mt-10 h-screen w-screen">
-            
-            <div class="mx-72 mb-48 mt-36 text-justify flex grid-cols-2 gap-2 space-x-28 ">
-                <div>
+        
+            <div class=" sm:container mt-36 text-justify px-1 w-full mx-auto ">
+                <div class="">
                     <div class="">
                         <h1 class="text-4xl font-bold">Desa Kintamani</h1>
                     </div>
                     <div class="text-xl text-gray-600 mb-1">
                         Kategori : <span class="text-green-700">Desa Maju</span>
                         <br>
-                        
                     </div>
                     <div class="">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti cupiditate, culpa ipsa cum inventore,
@@ -43,363 +43,203 @@
                         quas deserunt rem iure consequatur at!
                     </div>
                 </div>
-                
-                <div class="text-xl text-gray-600 mb-1">
-                    <!-- <div>Lokasi Desa Wisata</div> -->
-                    <div>Alamat   : Jln. Abcd No.02</div>
-                    <iframe class="border-8 border-lime-700 border-double"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7649.1466877873545!2d115.16821926787577!3d-8.803455159068722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1716778086056!5m2!1sid!2sid"
-                            width="600" height="350" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <br>
+                <div class="w-full h-96" >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5144.066257606532!2d115.15765092578037!3d-8.800860606502953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd244c13ee9d753%3A0x6c05042449b50f81!2sPoliteknik%20Negeri%20Bali!5e0!3m2!1sid!2sid!4v1719463096558!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div>
                 {{-- tab --}}
-                <div
-                    class="mx-72 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <div class="sm:hidden">
-                        <label for="tabs" class="sr-only">Select tab</label>
-                        <select id="tabs"
-                            class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option>Destinasi</option>
-                            <option>Akomodasi</option>
-                            <option>Paket Wisata</option>
-                            <option>Produk</option>
-                        </select>
+                    <div class="mb-4 mt-8 top-0  border-b border-gray-200 dark:border-gray-700 sm:container  text-justify px-1 w-full mx-auto ">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-green-600 hover:text-green-600 dark:text-green-500 dark:hover:text-green-500 border-green-600 dark:border-green-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                            <li class="me-2" role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="destinasi-styled-tab" data-tabs-target="#styled-destinasi" type="button" role="tab" aria-controls="destinasi" aria-selected="false">Destinasi</button>
+                            </li>
+                            <li class="me-2" role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="akomodasi-styled-tab" data-tabs-target="#styled-akomodasi" type="button" role="tab" aria-controls="akomodasi" aria-selected="false">Akomodasi</button>
+                            </li>
+                            <li class="me-2" role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="produk-styled-tab" data-tabs-target="#styled-produk" type="button" role="tab" aria-controls="produk" aria-selected="false">Produk</button>
+                            </li>
+                            <li role="presentation">
+                                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="pawi-styled-tab" data-tabs-target="#styled-pawi" type="button" role="tab" aria-controls="pawi" aria-selected="false">Paket Wisata</button>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse"
-                        id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
-                        <li class="w-full">
-                            <button id="destinasi-tab" data-tabs-target="#destinasi" type="button" role="tab"
-                                aria-controls="destinasi" aria-selected="true"
-                                class="inline-block w-full p-4 rounded-ss-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
-                                style="color: var(--text-color);">
-                                Destinasi
-                            </button>
-                        </li>
-                        <li class="w-full">
-                            <button id="akomodasi-tab" data-tabs-target="#akomodasi" type="button" role="tab"
-                                aria-controls="akomodasi" aria-selected="false"
-                                class="inline-block w-full p-4 text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
-                                style="color: var(--text-color);">
-                                Akomodasi
-                            </button>
-                        </li>
-                        <li class="w-full">
-                            <button id="pawi-tab" data-tabs-target="#pawi" type="button" role="tab" aria-controls="pawi"
-                                aria-selected="false"
-                                class="inline-block w-full p-4 rounded-se-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
-                                style="color: var(--text-color);">
-                                Paket Wisata
-                            </button>
-                        </li>
-                        <li class="w-full">
-                            <button id="produk-tab" data-tabs-target="#produk" type="button" role="tab"
-                                aria-controls="produk" aria-selected="false"
-                                class="inline-block w-full p-4 rounded-se-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
-                                style="color: var(--text-color);">
-                                Produk
-                            </button>
-                        </li>
-                    </ul>
-
-                    <script>
-                        const tabs = document.querySelectorAll('[role="tab"]');
-                        tabs.forEach(tab => {
-                            tab.addEventListener('click', () => {
-                                // Update 'aria-selected' attribute for all tabs
-                                tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-                                tab.setAttribute('aria-selected', 'true');
-
-                                // Update text color for all tabs
-                                tabs.forEach(t => {
-                                    if (t.getAttribute('aria-selected') === 'true') {
-                                        t.style.setProperty('--text-color', 'white'); // warna teks untuk tab yang dipilih
-                                    } else {
-                                        t.style.setProperty('--text-color', 'gray'); // warna teks untuk tab yang tidak dipilih
-                                    }
-                                });
-                            });
-                        });
-
-                        // Simulate a click on the default tab when the page loads
-                        window.onload = function() {
-                            document.getElementById('destinasi-tab').click();
-                        };
-                    </script>
-
-                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-                        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="destinasi"
-                            role="tabpanel" aria-labelledby="destinasi-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul Destinasi 1</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
+                    <div>
+                    <div id="default-styled-tab-content" class="sm:container  text-justify px-1 w-full mx-auto bg-secondary">
+                        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800 " id="styled-destinasi" role="tabpanel" aria-labelledby="destinasi-tab">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="#">
+                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                        </a>
+                                        <a href="#">
+                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul Destinasi 2</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
+                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="#">
+                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                        </a>
+                                        <a href="#">
+                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul Destinasi 3</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
+                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="#">
+                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                        </a>
+                                        <a href="#">
+                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul Destinasi 4</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
+                                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="#">
+                                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                        </a>
+                                        <a href="#">
+                                            <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-akomodasi" role="tabpanel" aria-labelledby="akomodasi-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                        <a href="#">
+                                            <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                        </a>
+                                        <div class="p-5">
+                                            <a href="#">
+                                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                            </a>
+                                            <a href="#">
+                                                <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                            </a>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    Read more
+                                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                    </svg>
+                                                </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul Destinasi 5</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-produk" role="tabpanel" aria-labelledby="produk-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                                    <a href="#">
+                                                        <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                                    </a>
+                                                <div class="p-5">
+                                                    <a href="#">
+                                                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                                    </a>
+                                                    <a href="#">
+                                                        <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                                    </a>
+                                                    <p class="mb-3  font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                    <div class="flex items-center justify-between">
+                                                        <span class="text-xl font-bold text-gray-900 dark:text-white">Rp 599.000</span>
+                                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Read more
+                                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                        </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-pawi" role="tabpanel" aria-labelledby="pawi-tab">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                                <a href="#">
+                                                    <img class="rounded-t-lg" src="{{ asset('storage/img/testpict.png') }}" alt="" />
+                                                </a>
+                                            <div class="p-5">
+                                                <a href="#">
+                                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Air Terjun Kehidupan</h5>
+                                                </a>
+                                                <a href="#">
+                                                <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">Wisata Alam</h5>
+                                                </a>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                                <div class="flex items-center justify-between">
+                                                        <span class="text-xl font-bold text-gray-900 dark:text-white">Rp 599.000</span>
+                                                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Read more
+                                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                                        </svg>
+                                                        </a>
+                                                </div>
+                                            </div>
+                                            
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-                        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="akomodasi"
-                            role="tabpanel" aria-labelledby="akomodasi-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul akomodasi 1</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul akomodasi 2</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul akomodasi 3</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul akomodasi 4</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul akomodasi 5</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-                        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="pawi" role="tabpanel"
-                            aria-labelledby="pawi-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul paket wisata 1</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul paket wisata 2</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul paket wisata 3</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul paket wisata 4</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul paket wisata 5</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-                        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="produk" role="tabpanel"
-                            aria-labelledby="produk-tab">
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul produk</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul produk 2</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul produk 3</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul produk 4</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                                <div>
-                                    <img class="h-auto max-w-full rounded-lg"
-                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                                    <h1 class="text-center text-2xl font-bold">Judul produk 5</h1>
-                                    <p class="pl-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Corporis amet tempora voluptate accusamus mollitia excepturi nesciunt
-                                        aspernatur,
-                                        doloribus sequi ad vel odio distinctio ab nihil et officiis numquam beatae iste
-                                        saepe. Adipisci, eveniet aperiam. Placeat delectus quasi voluptates minima alias
-                                        earum nisi,
-                                        veritatis quas provident beatae modi? Ullam, perferendis sit?</p>
-                                </div>
-                            </div>
-                        </div>
+                    
+                {{-- tab --}}
 
-                {{-- tab --}}  
             </div>
         {{-- content end --}}
-    </div>
+
     @include('partials.footer')
     {{-- container end --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
