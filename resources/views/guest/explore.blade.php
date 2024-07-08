@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " style="overflow: hidden;>
                         <a href="#">
                             <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
                         </a>
@@ -85,7 +85,7 @@
                             <a href="#">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nama Desa</h5>
                             </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci, officia fugit fuga reiciendis minus dolores dolore! Error recusandae vitae delectus? Corrupti maiores quo fugiat?</p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci</p>
                         </div>
                     </div>
                 </div>

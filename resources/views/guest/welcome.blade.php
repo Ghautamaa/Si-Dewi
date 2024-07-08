@@ -15,8 +15,7 @@
 
             <!-- Gambar Latar Belakang -->
             <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
-            <img src="{{ asset('desa.jpg') }}" class="inset-0 w-full h-full object-cover"
-                alt="" style="width: 100vw;">
+            <img src="{{ asset('desa.jpg') }}" class="inset-0 w-full h-full object-cover" alt="" style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->
 
@@ -25,16 +24,17 @@
             <div
                 class="absolute top-0 flex flex-col justify-center pl-80 h-full text-white text-4xl poppins-bold tracking-normal">
                 <div>
-                    <h1>EXPLORE BALIs </h1>
+                    <h1>EXPLORE BALI'S </h1>
                 </div>
                 <div>
                     <h1>WHERE CULTURE MEETS PARADISE</h1>
                 </div>
                 <div class="absolute flex justify-end  bg-transparent h-96 w-full">
                     <div class="absolute bottom-0 right-0">
-                        <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                        <button type="button"
+                            class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
                          focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center">
-                         Explore</button>
+                            Jelajahi</button>
 
                     </div>
                 </div>
@@ -45,15 +45,16 @@
                 <div class="grid grid-cols-2 gap-4 mr-5 ml-7">
                     <!-- Kolom Pertama: Judul dan Deskripsi -->
                     <div class="pl-10">
-                        <h1 class="text-2xl font-semibold mb-4">Distribution Map</h1>
-                        <p class="text-gray-600 nunito-regulermb-4">Find tourist villages based on the distribution map
-                            of districts and cities in Bali.</p>
+                        <h1 class="text-2xl font-semibold mb-1">Peta Sebaran</h1>
+                        <p class="text-gray-600 nunito-regulermb-4"> Temukan desa wisata berdasarkan peta distribusi
+                            kabupaten dan kota di Bali.
+                            Jelajahi keindahan alam dan kekayaan budaya yang ditawarkan oleh setiap destinasi. </p>
                     </div>
                     <!-- Kolom Kedua: Card per Kabupaten -->
-                    <div class="flex flex-col justify-between   ">
-                        <div class="flex flex-row space-x-4 wraper">
+                    <div class="flex flex-col justify-between wrapper container x">
+                        <div class="flex flex-row space-x-4">
                             <div
-                                class=" wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <a href="#">
                                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                         Noteworthy technology acquisitions 2021</h5>
@@ -135,44 +136,62 @@
             <div class="bg-secondary pl-15"
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
-                    <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
-                    <p class="text-gray-600 mb-8 text-white">Find tourist villages based on the distribution map of
-                        districts and cities in Bali.</p>
+                    <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Destinasi Favorit</h1>
+                    <p class="text-gray-600 mb-8 text-white">Nikmati panorama alam dan budaya yang menawan di setiap
+                        destinasi.</p>
                 </div>
-                <div class="container w-full max-w-5xl">
+                <div class="container w-full max-w-5xl mb-10">
                     <div class="flex flex-col space-y-4">
-                        <!-- Top row -->
-                        <div class="flex space-x-4">
-                            <!-- Large section on the left -->
-                            <div class="bg-gray-200 w-3/4 h-60 p-4">
-
-                                <div class="text-yellow-500 text-2xl font-bold">⭐️ 4.5</div>
-                                <div class="text-bottom">Desa Wisata Penglipuran</div>
-                                <img class="h-auto max-w-xl" src="/docs/images/examples/image-1@2x.jpg" alt="image description">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <!-- Gambar 1 -->
+                            <div class="image-container col-span-2 bg-white shadow-md">
+                                <img src="image1.jpg" alt="Image 1">
+                                <div class="description">Event Sunset</div>
+                                <div class="rating">4.5</div>
                             </div>
-                            <!-- Smaller section on the right -->
-                            <div class="bg-gray-200 w-1/4 h-60 p-4">
-                                <!-- Your content here -->
+                            <!-- Gambar 2 -->
+                            <div class="bg-white shadow-md overflow-hidden col-span-1">
+                                <img src="image2.jpg" alt="Image 2" class="w-full h-40 object-cover">
+                                <div class="p-4">
+                                    <h2 class="text-lg font-semibold">Event Sunrise</h2>
+                                    <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Bottom row -->
-                        <div class="flex space-x-4">
-                            <!-- Three equal-sized sections -->
-                            <div class="bg-gray-200 w-1/3 h-60 p-4">
-                                <img src="" alt="">
+                            <!-- Gambar 3 -->
+                            <div class="bg-white shadow-md overflow-hidden col-span-1">
+                                <img src="image3.jpg" alt="Image 3" class="w-full h-52 object-cover">
+                                <div class="p-4">
+                                    <h2 class="text-lg font-semibold">Event Night</h2>
+                                    <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="bg-gray-200 w-1/3 h-60 p-4">
-                                <!-- Your content here -->
+                            <!-- Gambar 4 -->
+                            <div class="bg-white shadow-md overflow-hidden col-span-1">
+                                <img src="image4.jpg" alt="Image 4" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h2 class="text-lg font-semibold">Event Day</h2>
+                                    <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="bg-gray-200 w-1/3 h-60 p-4">
-                                <!-- Your content here -->
+                            <!-- Gambar 5 -->
+                            <div class="bg-white shadow-md overflow-hidden col-span-1">
+                                <img src="image5.jpg" alt="Image 5" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h2 class="text-lg font-semibold">Event Noon</h2>
+                                    <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="bg-secondary pl-15"
+            <div class="bg-secondary pl-15 pt-40"
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 50vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">News Update</h1>
@@ -190,10 +209,11 @@
                             and purpose of this card,
                             offering insights and valuable information that can help the reader understand more about
                             the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
+                            offering insights and valuable information that can help the reader understand more about
+                            the topic being presented.
+                            the topic being presented.
+                            offering insights and valuable information that can help the reader understand more about
+                            the topic being presented.
                         </p>
                     </div>
                     <!-- Card 2 -->
@@ -205,10 +225,9 @@
                             and purpose of this card,
                             offering insights and valuable information that can help the reader understand more about
                             the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
+                            the topic being presented.
+                            offering insights and valuable information that can help the reader understand more about
+                            the topic being presented.
                         </p>
                     </div>
                     <!-- Card 3 -->
@@ -220,28 +239,52 @@
                             and purpose of this card,
                             offering insights and valuable information that can help the reader understand more about
                             the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
+                            the topic being presented.
+                            offering insights and valuable information that can help the reader understand more about
+                            the topic being presented.
                         </p>
                     </div>
                 </div>
-                <button class="mt-4 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300" style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
-                    Read More <i class="fas fa-arrow-right ml-5"></i>
-                </button>
+                <div>
+                    <button
+                        class="mt-6 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
+                        style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
+                        Read More <i class="fas fa-arrow-right ml-5"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="h-80"></div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md w-screen pt-40"
+                style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
+                <div class="">
+                    <div class="">
+                        <h1 class="text-2xl font-semibold mb-2 mt-7 text-black">Gallery</h1>
+                        <p class="text-gray-600 mb-8 ">Find tourist villages based on the distribution map of
+                            districts and cities in Bali.</p>
+                    </div>
+
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Repeat this div for each image -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="image1.jpg" alt="Image 1" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h2 class="text-lg font-semibold">Event Sunset</h2>
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <!-- ... (repeat for other images) ... -->
+                </div>
             </div>
 
-
-            <div class="h-52">
-                    <div class="bg-black"></div>
-            </div>
-        @include('partials.footer')
+            @include('partials.footer')
         </div>
-
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 <script>
     AOS.init();
 
-  </script>
+</script>
+
 </html>
