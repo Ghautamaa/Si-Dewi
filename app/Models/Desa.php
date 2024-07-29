@@ -47,19 +47,18 @@ class Desa extends Model
         }
     }
 
-   public static function createData(array $data)
-{
-    $client = self::getClient();    
-    dd($data);
-    $response = $client->request('POST', '/desawisata/add', $data);
-    if ($response->getStatusCode() == 201) {
-        $body = $response->getBody();
-        $post = json_decode($body, true);
-        return $post;
-    } else {
-        return null;
+    public static function createData1(array $data)
+    {
+        $client = self::getClient();    
+        $response = $client->request('POST', '/desawisata/add', $data);
+        if ($response->getStatusCode() == 201) {
+            $body = $response->getBody();
+            $post = json_decode($body, true);
+            return $post;
+        } else {
+            return null;
+        }
     }
-}
 
 
 

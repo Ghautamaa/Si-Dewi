@@ -21,6 +21,7 @@ class StoreDesaRequest extends FormRequest
             'kategori' => 'required|max:255',
             'kabupaten' => 'required|max:255',
             'gambar' => 'required|image|file',
+            // 'slug' => 'required|max:255|string',
         ];
     }
 }

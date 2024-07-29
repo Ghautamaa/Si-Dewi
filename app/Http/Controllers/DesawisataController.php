@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreDesaRequest;
-use App\Http\Requests\UpdateDesaRequest;
 use App\Models\Desa;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\StoreDesaRequest;
+use App\Http\Requests\UpdateDesaRequest;
 
 class DesawisataController extends Controller
 {
@@ -35,7 +36,8 @@ class DesawisataController extends Controller
     public function store(StoreDesaRequest $request)
     {
     $data = $request->validated();
-    $desa = Desa::createData($data);
+    $data['slug'] = Str::slug($data['nama']);
+    $desa = Desa::createData1($data);
 
     // Check the response and redirect accordingly
     if ($desa) {
