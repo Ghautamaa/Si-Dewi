@@ -14,7 +14,7 @@ class StoreDesaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required|max:255',
+            'nama' => 'required|max:255|string',
             'alamat' => 'required|max:255',
             'deskripsi' => 'required',
             'maps' => 'required|max:255',

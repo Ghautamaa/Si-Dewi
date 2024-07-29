@@ -36,18 +36,8 @@ class AkunController extends Controller
     public function store(StoreAkunRequest $request)
     {
         $validatedData = $request->validated();
-
-        $foto = $request->file('foto');
-        if ($foto) {
-            $fotoPath = $foto->store('public/fotos');
-            $validatedData['foto'] = basename($fotoPath);
-        }
-
-        $validatedData['createdAt'] = now();
-        $validatedData['updatedAt'] = now();
-
-        $response = Akun::createPost($validatedData);
-
+        $response = Akun::createData($validatedData);
+        dd($response);
         if ($response) {
             return redirect('/superadmin/akun')->with('message', 'Data berhasil ditambahkan');
         } else {
@@ -84,16 +74,7 @@ class AkunController extends Controller
     {
         $validatedData = $request->validated();
 
-        if (!$request->hasFile('foto')) {
-            $validatedData['foto'] = $request->input('fotoOld');
-        } else {
-            $foto = $request->file('foto');
-            $fotoPath = $foto->store('public/fotos');
-            $validatedData['foto'] = basename($fotoPath);
-        }
-
         $validatedData['updatedAt'] = now();
-
         $response = Akun::updatePost($id, $validatedData);
 
         if ($response) {

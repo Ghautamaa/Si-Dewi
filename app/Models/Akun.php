@@ -50,6 +50,7 @@ class Akun extends Model
     public static function createData(array $data)
     {
         $client = self::getClient();
+        dd($client,$data);
         $response = $client->request('POST', '/akun/add', [
             'json' => $data
         ]);

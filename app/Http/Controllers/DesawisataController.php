@@ -33,22 +33,9 @@ class DesawisataController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreDesaRequest $request)
-{
-    // Validate and get the validated data
+    {
     $data = $request->validated();
-
-    // Handle file upload if it exists
-    $file = $request->file('gambar'); // Assuming 'gambar' is the file input name
-
-    // Check if a file was uploaded
-    if ($file) {
-        // Use the createData method to send both data and file
-        $desa = Desa::createData($data, $file);
-    } else {
-        // Handle the case where no file is uploaded
-        // You might want to decide if you want to handle this case differently
-        $desa = Desa::createData($data, null);
-    }
+    $desa = Desa::createData($data);
 
     // Check the response and redirect accordingly
     if ($desa) {

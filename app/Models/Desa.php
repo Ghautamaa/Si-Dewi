@@ -15,6 +15,7 @@ class Desa extends Model
             'headers' => [
                 'Authorization' => 'Bearer ' . Session::get('accessToken'),
                 'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
             ],
         ]);
     }
@@ -47,28 +48,12 @@ class Desa extends Model
         }
     }
 
-   public static function createData(array $data, $file)
+   public static function createData(array $data)
 {
     $client = self::getClient();
-
-    // Prepare the multipart form data
-    $multipartData = [
-        [
-            'name' => 'json',
-            'contents' => json_encode($data),
-            'headers' => ['Content-Type' => 'application/json']
-        ],
-        [
-            'name' => 'gambar',
-            'contents' => fopen($file->getPathname(), 'r'),
-            'filename' => $file->getClientOriginalName()
-        ]
-    ];
-
-    $response = $client->request('POST', '/desawisata/add', [
-        'multipart' => $multipartData
-    ]);
-
+    dd($data);
+    $response = $client->request('POST', '/desawisata/add', $data);
+    
     if ($response->getStatusCode() == 201) {
         $body = $response->getBody();
         $post = json_decode($body, true);
