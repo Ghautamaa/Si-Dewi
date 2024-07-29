@@ -75,7 +75,7 @@ class AkunController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['updatedAt'] = now();
-        $response = Akun::updatePost($id, $validatedData);
+        $response = Akun::updateData($id, $validatedData);
 
         if ($response) {
             return redirect('/profile')->with('message', 'Data berhasil diperbarui');
@@ -89,7 +89,7 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        $success = Akun::deletePost($id);
+        $success = Akun::deleteData($id);
 
         if ($success) {
             return redirect('/superadmin/akun')->with('message', 'Data berhasil dihapus');
@@ -125,7 +125,7 @@ class AkunController extends Controller
 
         $validatedData['updatedAt'] = now();
 
-        $response = Akun::updatePost($id, $validatedData);
+        $response = Akun::updateData($id, $validatedData);
 
         if ($response) {
             return redirect('/profile')->with('message', 'Password berhasil diperbarui');
