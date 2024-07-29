@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Desawisata;
+use App\Http\Requests\StoreDesaRequest;
+use App\Http\Requests\UpdateDesaRequest;
+use App\Models\Desa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -13,17 +15,9 @@ class DesawisataController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata')->collect();
-        // if(Desawisata::all()->toArray()!=$response){
-        //     Desawisata::truncate();
-        //     for ($i=0; $i < count($response); $i++) { 
-        //         Desawisata::create($response[$i]);
-        //     }
-        // }
-        // $datadesa=Desawisata::all();
-
-        return view('superadmin.desawisata.index',[
-            'desawisata'=> $response
+        $desawisata = Desa::getAll();
+        return view('superadmin.desawisata.index', [
+            'desawisata' => $desawisata
         ]);
     }
 
@@ -32,60 +26,54 @@ class DesawisataController extends Controller
      */
     public function create()
     {
-        return view('superadmin.desawisata.create',[
-            // 'desawisata'=> $response
-        ]);
+        return view('superadmin.desawisata.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nama'=>'required|max:25',
-            'alamat'=>'required',
-            'gambar'=>'required|image|file',
-            'deskripsi'=>'required',
-            'maps'=>'required',
-            'kategori'=>'required',
-            'kabupaten'=>'required',
-        ]);
+    public function store(StoreDesaRequest $request)
+{
+    // Validate and get the validated data
+    $data = $request->validated();
 
-        $validatedData['createdAt'] = now();
-        $validatedData['updatedAt'] = now();
+    // Handle file upload if it exists
+    $file = $request->file('gambar'); // Assuming 'gambar' is the file input name
 
-        $response = Http::withToken($request->session()->get('accessToken'))->attach(
-            'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post(env('APP_API_URL').'/desawisata/add',$validatedData);
-        dd($request,$response);
-
-        if($response->successful()){
-            return redirect('/superadmin/desa')->with('message','berhasil menambahkan');
-        }elseif ($response->failed()) {
-            return redirect('/superadmin/desa')->with('message','gagal menambahkan');
-        } else {
-            return redirect('/superadmin/desa')->with('message','erorr system 500');
-        }
-        
+    // Check if a file was uploaded
+    if ($file) {
+        // Use the createData method to send both data and file
+        $desa = Desa::createData($data, $file);
+    } else {
+        // Handle the case where no file is uploaded
+        // You might want to decide if you want to handle this case differently
+        $desa = Desa::createData($data, null);
     }
+
+    // Check the response and redirect accordingly
+    if ($desa) {
+        return redirect('/superadmin/desa')->with('success', 'Desa created successfully.');
+    } else {
+        return redirect('/superadmin/desa')->with('error', 'Failed to create Desa.');
+    }
+}
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {   
-        if(request()->session()->get('id_desa') != $id){
+    {
+        if (request()->session()->get('id_desa') != $id) {
             abort(403);
         }
-        
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->json();
-        $response2 = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/desa/'.$id)->json();
-        
-        // dd($response2[0]);
-        return view('Admin.desa.show',[
-            'desa'=>$response,
-            'informasi'=>$response2,
+
+        $desawisata = Desa::getById($id);
+        $informasi = Http::withToken(request()->session()->get('accessToken'))
+            ->get(env('APP_API_URL').'/informasi/desa/'.$id)->json();
+
+        return view('Admin.desa.show', [
+            'desa' => $desawisata,
+            'informasi' => $informasi,
         ]);
     }
 
@@ -93,56 +81,48 @@ class DesawisataController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {   
-        if(request()->session()->get('id_desa') != $id){
+    {
+        if (request()->session()->get('id_desa') != $id) {
             abort(403);
         }
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->collect();
-        // dd($response);
-        return view('superadmin.desawisata.edit',[
-            'desawisata'=>$response,
-            'title'=>'desawisata'
+
+        $desawisata = Desa::getById($id);
+
+        return view('superadmin.desawisata.edit', [
+            'desawisata' => $desawisata,
+            'title' => 'desawisata'
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateDesaRequest $request, string $id)
     {
-        if(request()->session()->get('id_desa') != $id){
+        if (request()->session()->get('id_desa') != $id) {
             abort(403);
         }
-        $validatedData = $request->validate([
-            'nama'=>'required|max:255',
-            'alamat'=>'required|max:255',
-            'deskripsi'=>'required',
-            'maps'=>'required|max:255',
-            'kategori'=>'required|max:255',
-            'kabupaten'=>'required|max:255',
-        ]);
-        if(!$request['gambar']){
-            $validatedData['gambar'] = $request['gambarOld'];
+
+        $validatedData = $request->validated();
+
+        if (!$request->hasFile('gambar')) {
+            $validatedData['gambar'] = $request->input('gambarOld');
+        } else {
+            $gambar = $request->file('gambar');
+            $gambarPath = $gambar->store('public/gambars');
+            $validatedData['gambar'] = basename($gambarPath);
         }
 
-        $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
-       
-        if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
-        }else{
-            $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
-        }
+        $response = Desa::updateData($id, $validatedData);
 
-        if($response->successful()){
-            return redirect('/admin/profil-desa/'.$id)->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/admin/profil-desa/'.$id)->with('message','gagal mengupdate');
+        if ($response) {
+            return redirect('/admin/profil-desa/'.$id)->with('message', 'Successfully updated.');
+        } elseif ($response === false) {
+            return redirect('/admin/profil-desa/'.$id)->with('message', 'Failed to update.');
         } else {
-            return redirect('/admin/profil-desa/'.$id)->with('message','erorr system 500');
+            return redirect('/admin/profil-desa/'.$id)->with('message', 'Error 500: System error.');
         }
     }
 
@@ -151,13 +131,14 @@ class DesawisataController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::delete(env('APP_API_URL').'/desawisata/'.$id);
-        if($response->successful()){
-            return redirect('/superadmin/desa')->with('message','berhasil menghapus');
-        }elseif ($response->failed()) {
-            return redirect('/superadmin/desa')->with('message','gagal menghapus');
+        $success = Desa::deleteData($id);
+
+        if ($success) {
+            return redirect('/superadmin/desa')->with('message', 'Successfully deleted.');
+        } elseif ($success === false) {
+            return redirect('/superadmin/desa')->with('message', 'Failed to delete.');
         } else {
-            return redirect('/superadmin/desa')->with('message','erorr system 500');
+            return redirect('/superadmin/desa')->with('message', 'Error 500: System error.');
         }
     }
 }

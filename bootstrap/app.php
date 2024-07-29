@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Middleware\Admin;
-use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\CheckRole;
 use Illuminate\Foundation\Application;
-use App\Http\Middleware\EnsureTokenIsValid;
-use App\Http\Middleware\SuperadminMiddleware;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -16,9 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'SUPERADMIN' => SuperadminMiddleware::class,
-            'ADMIN' => AdminMiddleware::class,
-
+            'role' => CheckRole::class,
         ]);
 
     })

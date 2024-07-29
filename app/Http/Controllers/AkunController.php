@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreAkunRequest;
+use App\Http\Requests\UpdateAkunRequest;
+use App\Http\Requests\PasswordUpdateRequest;
+use App\Models\Akun;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
 
 class AkunController extends Controller
 {
@@ -13,9 +16,9 @@ class AkunController extends Controller
      */
     public function index(Request $request)
     {
-        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
-        return view('superadmin.akun.index',[
-            'akun'=>$response
+        $akun = Akun::getAll();
+        return view('superadmin.akun.index', [
+            'akun' => $akun
         ]);
     }
 
@@ -24,40 +27,32 @@ class AkunController extends Controller
      */
     public function create()
     {
-        return view('superadmin.akun.create',[
-            // 'akun'=> $response
-        ]);
+        return view('superadmin.akun.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAkunRequest $request)
     {
-        $validatedData = $request->validate([ 
-            'nama'=>'required',
-            'no_telp'=>'required',
-            'password'=>'required',
-            'email'=>'required|email',
-            'foto'=>'required|image|file',
-            'role'=>'required',
-        ]);
+        $validatedData = $request->validated();
+
+        $foto = $request->file('foto');
+        if ($foto) {
+            $fotoPath = $foto->store('public/fotos');
+            $validatedData['foto'] = basename($fotoPath);
+        }
 
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
-        $response = Http::attach(
-            'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-        )->post(env('APP_API_URL').'/akun/add',$validatedData);
-        
-        if($response->successful()){
-            return redirect('/superadmin/akun')->with('message',$response->reason());
-        }elseif ($response->failed()) {
-            return redirect('/superadmin/akun')->with('message',$response->reason());
+        $response = Akun::createPost($validatedData);
+
+        if ($response) {
+            return redirect('/superadmin/akun')->with('message', 'Data berhasil ditambahkan');
         } else {
-            return redirect('/superadmin/akun')->with('message',$response->reason());
+            return redirect('/superadmin/akun')->with('message', 'Gagal menambahkan data');
         }
-        
     }
 
     /**
@@ -65,7 +60,10 @@ class AkunController extends Controller
      */
     public function show(string $id)
     {
-        
+        $akun = Akun::getById($id);
+        return view('superadmin.akun.show', [
+            'akun' => $akun
+        ]);
     }
 
     /**
@@ -73,42 +71,35 @@ class AkunController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $akun = Akun::getById($id);
+        return view('superadmin.akun.edit', [
+            'akun' => $akun
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAkunRequest $request, string $id)
     {
-        $validatedData = $request->validate([
-            'nama'=>'string',
-            'no_telp'=>'string',
-            'email'=>'string|email',
-            'foto'=>'image|file|nullable',
-        ]);
+        $validatedData = $request->validated();
 
-        if(!$request['foto']){
-            $validatedData['foto'] = $request['fotoOld'];
-        } 
-
-        $validatedData['updatedAt'] = now();
-        // dd($request,$id,$validatedData);
-
-        if(!isset($_FILES['foto'])){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
-        }else{
-            $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-            )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
+        if (!$request->hasFile('foto')) {
+            $validatedData['foto'] = $request->input('fotoOld');
+        } else {
+            $foto = $request->file('foto');
+            $fotoPath = $foto->store('public/fotos');
+            $validatedData['foto'] = basename($fotoPath);
         }
 
-        if($response->successful()){
-            return redirect('/profile')->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/profile')->with('message','gagal mengupdate');
+        $validatedData['updatedAt'] = now();
+
+        $response = Akun::updatePost($id, $validatedData);
+
+        if ($response) {
+            return redirect('/profile')->with('message', 'Data berhasil diperbarui');
         } else {
-            return redirect('/profile')->with('message','erorr system 500');
+            return redirect('/profile')->with('message', 'Gagal memperbarui data');
         }
     }
 
@@ -117,56 +108,48 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->delete(env('APP_API_URL').'/akun/'.$id);
-        if($response->successful()){
-            return redirect('/superadmin/akun')->with('message','berhasil menghapus');
-        }elseif ($response->failed()) {
-            return redirect('/superadmin/akun')->with('message','gagal menghapus');
+        $success = Akun::deletePost($id);
+
+        if ($success) {
+            return redirect('/superadmin/akun')->with('message', 'Data berhasil dihapus');
         } else {
-            return redirect('/superadmin/akun')->with('message','erorr system 500');
+            return redirect('/superadmin/akun')->with('message', 'Gagal menghapus data');
         }
     }
 
-    public function profile(){
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
-        return view('profile',[
-            'profile'=>$response
+    public function profile()
+    {
+        $id = request()->session()->get('id');
+        $profile = Akun::getById($id);
+        return view('profile', [
+            'profile' => $profile
         ]);
     }
 
-    public function password(Request $request, string $id){
-        $validatedData = $request->validate([
-            'oldpassword'=>'required',
-            'newpassword'=>'required',
-            'repeatpassword'=>'required',
-            ]);
-            
-            
-            $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
-        if(!password_verify($request['oldpassword'],$response['password'])){
-            return false;
+    public function password(PasswordUpdateRequest $request, string $id)
+    {
+        $validatedData = $request->validated();
+
+        $profile = Akun::getById($id);
+
+        if (!password_verify($validatedData['oldpassword'], $profile['password'])) {
+            return redirect()->back()->withErrors(['oldpassword' => 'Password lama tidak cocok']);
         }
 
-        if($validatedData['newpassword'] === $validatedData['repeatpassword']){
-            $validatedData['password'] = $request['newpassword'];
+        if ($validatedData['newpassword'] === $validatedData['repeatpassword']) {
+            $validatedData['password'] = Hash::make($validatedData['newpassword']);
+        } else {
+            return redirect()->back()->withErrors(['newpassword' => 'Password baru dan konfirmasi tidak cocok']);
         }
 
         $validatedData['updatedAt'] = now();
 
-        if(!isset($_FILES['foto'])){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
-        }else{
-            $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-            )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
-        }
+        $response = Akun::updatePost($id, $validatedData);
 
-        if($response->successful()){
-            return redirect('/profile')->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/profile')->with('message','gagal mengupdate');
+        if ($response) {
+            return redirect('/profile')->with('message', 'Password berhasil diperbarui');
         } else {
-            return redirect('/profile')->with('message','erorr system 500');
+            return redirect('/profile')->with('message', 'Gagal memperbarui password');
         }
     }
 }
