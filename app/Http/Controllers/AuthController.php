@@ -47,7 +47,7 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
     $accessToken = $request->session()->get('accessToken');
-
+        
     // Make the API request to log out
     $response = Http::withToken($accessToken)
         ->delete(env('APP_API_URL') . '/akun/logout', [
