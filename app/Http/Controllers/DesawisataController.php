@@ -37,7 +37,7 @@ class DesawisataController extends Controller
     {
     $data = $request->validated();
     $data['slug'] = Str::slug($data['nama']);
-    $desa = Desa::createData1($data);
+    $desa = Desa::createData($data);
 
     // Check the response and redirect accordingly
     if ($desa) {
@@ -73,8 +73,8 @@ class DesawisataController extends Controller
     {
         if (request()->session()->get('id_desa') != $id) {
             abort(403);
-        }
-
+        } 
+        
         $desawisata = Desa::getById($id);
 
         return view('superadmin.desawisata.edit', [
@@ -82,6 +82,8 @@ class DesawisataController extends Controller
             'title' => 'desawisata'
         ]);
     }
+
+    
 
     /**
      * Update the specified resource in storage.

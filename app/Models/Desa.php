@@ -47,7 +47,7 @@ class Desa extends Model
         }
     }
 
-    public static function createData1(array $data)
+    public static function createData(array $data)
     {
         $client = self::getClient();    
         $response = $client->request('POST', '/desawisata/add', $data);
