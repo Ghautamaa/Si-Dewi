@@ -1,9 +1,11 @@
 <?php
 namespace App\Models;
 
+use Error;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Throwable;
 
 class Desa extends Model
 {
@@ -49,18 +51,20 @@ class Desa extends Model
 
     public static function createData(array $data)
     {
-        $client = self::getClient();    
-        $response = $client->request('POST', '/desawisata/add', $data);
-        if ($response->getStatusCode() == 201) {
-            $body = $response->getBody();
-            $post = json_decode($body, true);
-            return $post;
-        } else {
-            return null;
+        try{
+            $client = self::getClient();    
+            $response = $client->request('POST', '/desawisata/add', $data);
+            if ($response->getStatusCode() == 201) {
+                $body = $response->getBody();
+                $post = json_decode($body, true);
+                return $post;
+            } else {
+                return null;
+            }
+        }catch(Throwable $e){
+            dd($e);
         }
     }
-
-
 
     public static function updateData(int $id, array $data)
     {
