@@ -2,13 +2,13 @@
 
 @section('main')
     <div class="mx-4 mt-20">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Admin / Dashboard </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Admin / Dashboard </h2>
         <div class="flex justify-between">
-            <h1 class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Dashboard</h1>
+            <h1 class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Dashboard</h1>
         </div>
-        <div class="flex gap-6 drop-shadow-md mt-10">
+        <div class="flex gap-6 mt-10 drop-shadow-md">
             <div href="#"
-                class="flex  gap-5  w-52 p-3  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="flex gap-5 p-3 bg-white border border-gray-200 rounded-lg shadow w-52 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
@@ -20,12 +20,12 @@
                     <h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {{ $desa_count }}
                     </h5>
-                    <p class="mb-2 text-base  tracking-tight text-gray-600 dark:text-white">Total Desa</p>
+                    <p class="mb-2 text-base tracking-tight text-gray-600 dark:text-white">Total Desa</p>
                 </div>
 
             </div>
             <div href="#"
-                class="flex  gap-5  w-52 p-3  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="flex gap-5 p-3 bg-white border border-gray-200 rounded-lg shadow w-52 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +35,7 @@
                     <h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {{ $destinasi_count }}
                     </h5>
-                    <p class="mb-2 text-base  tracking-tight text-gray-600 dark:text-white">Total Destinasi</p>
+                    <p class="mb-2 text-base tracking-tight text-gray-600 dark:text-white">Total Destinasi</p>
                 </div>
             </div>
         </div>
@@ -53,26 +53,26 @@
             <p>count desa di Denpasar: {{ $desa_per_kabupaten['Denpasar'] }}</p>
             <p>count desa di Buleleng: {{ $desa_per_kabupaten['Buleleng'] }}</p>
         </div> --}}
-        <div class="grid sm:grid-cols-3 w-full h-full gap-10 mt-10">
-            <div class="p-6 h-full   bg-white drop-shadow-xl rounded-xl">
+        <div class="grid w-full h-full gap-10 mt-10 sm:grid-cols-3">
+            <div class="h-full p-6 bg-white drop-shadow-xl rounded-xl">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="hidden sm:block p-6 sm:col-span-2 bg-white drop-shadow-xl rounded-xl">
+            <div class="hidden p-6 bg-white sm:block sm:col-span-2 drop-shadow-xl rounded-xl">
                 <canvas class="h-full" id="myChart2"></canvas>
             </div>
         </div>
-        <div class="grid sm:grid-cols-3 mt-10 w-full h-full gap-10">
-            <div class="p-6 h-fit w-full col-span-2 bg-white drop-shadow-xl rounded-xl">
-                <h1 class="text-3xl font-semibold text-center my-5">Destinasi Dengan Review Terbaik</h1>
+        <div class="grid w-full h-full gap-10 mt-10 sm:grid-cols-3">
+            <div class="w-full col-span-2 p-6 bg-white h-fit drop-shadow-xl rounded-xl">
+                <h1 class="my-5 text-3xl font-semibold text-center">Destinasi Dengan Review Terbaik</h1>
 
-                <div class=" grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 
                     @foreach ($review as $index => $row)
-                        <a href="/desa/{{ $row['destination']['id_desawisata'] }}/destinasi/{{ $row['destination']['id'] }}"
+                        <a href="/desa/{{ $row['destination']['id_desawisata'] ?? '' }}/destinasi/{{ $row['destination']['id'] ?? '' }}"
                             class="relative block text-white group" style="height:20rem">
                             <div class="relative flex items-end h-full transition-transform transform shadow-lg rounded-xl group-hover:-translate-y-2"
-                                style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}'); background-size: cover; background-position: center;">
-                                <div class="flex absolute p-1 m-2 text-xl font-bold text-yellow-500l top-5 right-5">
+                                style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] ?? '' }}'); background-size: cover; background-position: center;">
+                                <div class="absolute flex p-1 m-2 text-xl font-bold text-yellow-500l top-5 right-5">
                                     @php
 
                                         // Asumsikan averageRating = 3.8
@@ -124,16 +124,16 @@
                                 </div>
                                 <div
                                     class="p-4 !pt-0 z-10 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
-                                    <h2 class="mt-4 text-3xl font-bold sm:text-3xl">{{ $row['destination']['nama'] }}
+                                    <h2 class="mt-4 text-3xl font-bold sm:text-3xl">{{ $row['destination']['nama'] ?? '' }}
                                     </h2>
                                 </div>
                                 <div
                                     class="absolute z-20 w-full p-4 transition-opacity opacity-0 group-hover:opacity-100 sm:p-6 lg:p-8">
-                                    <h3 class="mt-4 text-xl font-medium sm:text-2xl">{{ $row['destination']['nama'] }}
+                                    <h3 class="mt-4 text-xl font-medium sm:text-2xl">{{ $row['destination']['nama'] ?? '' }}
                                     </h3>
                                     <p
                                         class="mt-4 text-sm sm:text-base break-words w-full {{ $loop->first ? 'block' : 'hidden' }}">
-                                        {{ \Illuminate\Support\Str::limit($row['destination']['deskripsi'], 30) }}
+                                        {{ \Illuminate\Support\Str::limit($row['destination']['deskripsi'] ?? '', 30) }}
                                     </p>
                                     <p class="mt-4 font-bold">Read more</p>
                                 </div>
@@ -142,9 +142,9 @@
                     @endforeach
                 </div>
             </div>
-            <div class="p-6 h-full w-full  bg-white drop-shadow-xl rounded-xl">
-                <h1 class="text-3xl font-semibold text-center my-5">Berita Terbaru</h1>
-                <div class="grid grid-cols-1  gap-6 ">
+            <div class="w-full h-full p-6 bg-white drop-shadow-xl rounded-xl">
+                <h1 class="my-5 text-3xl font-semibold text-center">Berita Terbaru</h1>
+                <div class="grid grid-cols-1 gap-6 ">
                     <!-- Card 1 -->
                     @foreach ($berita as $row)
                         <a href="/artikel/{{ $row['id'] }}" class="relative block text-white group"

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('Admin.layouts.main')
 
 @section('main')
     <div class="mx-4">
